@@ -24,7 +24,7 @@ public class SurpriseBoxServer {
             PrintWriter out = new PrintWriter(socket.getOutputStream(), true);                
             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             while(true) {
-                                
+                
             }
         } catch (IOException ex) {
             Logger.getLogger(PasswordGeneratorServer.class.getName()).log(Level.SEVERE, null, ex);

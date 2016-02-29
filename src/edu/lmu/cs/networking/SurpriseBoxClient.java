@@ -65,18 +65,18 @@ public class SurpriseBoxClient {
         // source de : http://stackoverflow.com/questions/3718435/refresh-jframe-after-adding-new-components
     }
     public void run() {
-        /*try {
+        try {
             Socket socket = new Socket("localhost", 10100);
             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             PrintWriter out = new PrintWriter(socket.getOutputStream(), true);            
+            (new Adversaire(this)).start();
             while(true) {
                 int n = Integer.parseInt( in.readLine() );
                 this.mesBoutons[n].setBackground(Color.PINK);
-            }
+            }            
         } catch (IOException ex) {
             Logger.getLogger(SurpriseBoxClient.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
-        (new Adversaire(this)).start();
+        }        
     }
     public static void main(String args[]) {
         String unNom = JOptionPane.showInputDialog(null, "Veuillez saisir un nom de joueur : ", "Question", JOptionPane.QUESTION_MESSAGE);
