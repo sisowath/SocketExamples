@@ -49,6 +49,7 @@ public class TicTacToeClient {
     private BufferedReader in;
     private PrintWriter out;
 
+    private String nom;
     /**
      * Constructs the client by connecting to a server, laying out the
      * GUI and registering GUI listeners.
@@ -56,6 +57,7 @@ public class TicTacToeClient {
     public TicTacToeClient(String serverAddress) throws Exception {
 
         // Setup networking
+        nom = JOptionPane.showInputDialog(null, "Veuillez saisir un nom : ", "Question", JOptionPane.QUESTION_MESSAGE);
         socket = new Socket(serverAddress, PORT);
         in = new BufferedReader(new InputStreamReader(
             socket.getInputStream()));
@@ -101,7 +103,7 @@ public class TicTacToeClient {
                 char mark = response.charAt(8);
                 icon = new ImageIcon(mark == 'X' ? "x.gif" : "o.gif");
                 opponentIcon  = new ImageIcon(mark == 'X' ? "o.gif" : "x.gif");
-                frame.setTitle("Tic Tac Toe - Player " + mark);
+                frame.setTitle("Tic Tac Toe - Player " + mark + " - " +  nom);
             }
             while (true) {
                 response = in.readLine();

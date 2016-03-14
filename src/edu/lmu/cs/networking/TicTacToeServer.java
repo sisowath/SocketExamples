@@ -1,11 +1,23 @@
 package edu.lmu.cs.networking;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
 
 /**
  * A server for a network multi-player tic tac toe game.  Modified and
@@ -37,6 +49,24 @@ public class TicTacToeServer {
     public static void main(String[] args) throws Exception {
         ServerSocket listener = new ServerSocket(8901);
         System.out.println("Tic Tac Toe Server is Running");
+        JFrame frame = new JFrame("Tic Tac Toe - Server");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(350, 350);
+        frame.setVisible(true);
+        frame.setLocationRelativeTo(null);
+        ImageIcon pic = new ImageIcon("src/images/server.png");
+        JPanel panel = new JPanel();
+        panel.add(new JLabel(pic));
+        frame.add(panel);
+        JLabel lblInfo = new JLabel("Le serveur est à l'écoute sur le port #" + listener.getLocalPort(), SwingUtilities.CENTER);
+        lblInfo.setFont(new Font("ARIAL", Font.BOLD, 14));
+        lblInfo.setOpaque(true);
+        lblInfo.setForeground(Color.BLUE);
+        lblInfo.setBackground(Color.YELLOW);
+        frame.add(lblInfo, BorderLayout.SOUTH);
+        frame.setResizable(false);
+        frame.revalidate();
+        frame.repaint();
         try {
             while (true) {
                 Game game = new Game();
